@@ -23,9 +23,9 @@ app.get("/api/:date", function (req, res) {
   
   if (date.toString() === "Invalid Date") {
     const milliseconds_string=req.params.milliseconds;
-  const date = new Date(date_string);
+  const date = new Date(number(milliseconds_string));
   return res.json({
-    unix:milliseconds_string.getTime(),utc:date.toUTCString() 
+    unix:date.getTime(),utc:date.toUTCString() 
   })
   }
   res.json({
