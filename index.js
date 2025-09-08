@@ -23,11 +23,11 @@ app.get("/api/:data", function (req, res) {
 
 app.get("/now", 
   (req, res, next) => {
-    req.time = new Date;
+    req.time = new Date().toString();
     next(); // ไปต่อยัง handler ถัดไป
   },
   (req, res) => {
-    res.json({ time: req.time }); // ส่ง response เป็น JSON
+    res.json({ utc: req.time }); // ส่ง response เป็น JSON
   }
 );
 
