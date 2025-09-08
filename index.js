@@ -17,7 +17,7 @@ app.use(express.static('public'));
 app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
-app.get("/api/:data", function (req, res) {
+app.get("/api", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
