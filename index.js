@@ -17,9 +17,6 @@ app.use(express.static('public'));
 app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
-app.get("/api", function (req, res) {
-  res.json({greeting: 'hello API'});
-});
 
 app.get("/now", (req,res,next)=>{
     req.time=new Date().toString();
