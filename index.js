@@ -18,7 +18,15 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 app.get("/api/:data", function (req, res) {
-  res.json({greeting: 'hello API'});
+  const date_string=req.params.word;
+  const unixMilliseconds = Date.now();
+  (req, res, next) => {
+    req.time = new Date(date_string).toString();
+    next(); // ไปต่อยัง handler ถัดไป
+  },
+  (req, res) => {
+    res.json({ unix: unixMilliseconds,utc: req.time }); // ส่ง response เป็น JSON
+  }
 });
 
 app.get("/now", 
