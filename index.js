@@ -32,9 +32,9 @@ app.get("/api/:milliseconds", function (req, res) {
   // const date_string=req.params.date;
 
   const date = new Date(date_string);
-  if (date.toString() === "Invalid Date") {
-    return res.json({ error: "Invalid Date" });
-  }
+  // if (date.toString() === "Invalid Date") {
+  //   return res.json({ error: "Invalid Date" });
+  // }
   res.json({
     unix:milliseconds_string.getTime(),utc:date.toUTCString() 
   })
