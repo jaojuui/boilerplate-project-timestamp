@@ -19,13 +19,27 @@ app.get("/", function (req, res) {
 });
 app.get("/api/:date", function (req, res) {
   const date_string=req.params.date;
+  if(data_string.length>11){
+    const date = new Date(date_string);
+  
+    if (date.toString() === "Invalid Date") {
+      return res.json({ error: "Invalid Date" });
+    }
+    res.json({
+      unix:date.getTime(),utc:date.toUTCString() 
+    })
+  }else{
+    const milliseconds_string=req.params.date;
+  // const date_string=req.params.date;
+
   const date = new Date(date_string);
-  if (date.toString() === "Invalid Date") {
-    return res.json({ error: "Invalid Date" });
-  }
+  // if (date.toString() === "Invalid Date") {
+  //   return res.json({ error: "Invalid Date" });
+  // }
   res.json({
-    unix:date.getTime(),utc:date.toUTCString() 
+    unix:milliseconds_string.getTime(),utc:date.toUTCString() 
   })
+  }
 });
 app.get("/api/:milliseconds", function (req, res) {
   const milliseconds_string=req.params.milliseconds;
