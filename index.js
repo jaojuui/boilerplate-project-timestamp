@@ -22,7 +22,7 @@ app.get("/api/:date", function (req, res) {
   const date = new Date(date_string);
   
   if (date.toString() === "Invalid Date") {
-    const milliseconds_string=req.params.milliseconds;
+    const milliseconds_string=req.params.date;
   const date = new Date(number(milliseconds_string));
   return res.json({
     unix:date.getTime(),utc:date.toUTCString() 
