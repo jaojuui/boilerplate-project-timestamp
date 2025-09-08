@@ -23,7 +23,7 @@ app.get("/api/:data", function (req, res) {
 
 app.get("/now", 
   (req, res, next) => {
-    req.time = new Date().toString();
+    req.time = new Date(2015-12-25).toString();
     next(); // ไปต่อยัง handler ถัดไป
   },
   (req, res) => {
