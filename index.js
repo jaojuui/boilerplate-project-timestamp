@@ -19,14 +19,13 @@ app.get("/", function (req, res) {
 });
 app.get("/api/:date", function (req, res) {
   const date_string=req.params.date;
-  const unixMilliseconds = Date.now();
-  (req, res, next) => {
-    req.time = new Date(date_string).toString();
-    next(); // ไปต่อยัง handler ถัดไป
-  },
-  (req, res) => {
-    res.json({ unix: unixMilliseconds,utc: req.time }); // ส่ง response เป็น JSON
+  const date = new Date(date_string);
+  if (date.toString() === "Invalid Date") {
+    return res.json({ error: "Invalid Date" });
   }
+  res.json({
+    unix:date.getTime(),utc:date.toUTCString() 
+  })
 });
 
 app.get("/now", 
