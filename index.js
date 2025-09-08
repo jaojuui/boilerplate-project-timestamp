@@ -25,13 +25,13 @@ app.get("/api/:date", function (req, res) {
     const milliseconds_string = date_string;
     console.log(milliseconds_string);
     const date = new Date(Number(milliseconds_string));
+    if (date.toString() === "Invalid Date") {
+      return res.json({ error: "Invalid Date" });
+    }
     res.json({
       unix: date.getTime(),
       utc: date.toUTCString(),
     });
-    if (date.toString() === "Invalid Date") {
-      return res.json({ error: "Invalid Date" });
-    }
   }
   res.json({
     unix: date.getTime(),
