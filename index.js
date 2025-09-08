@@ -17,8 +17,8 @@ app.use(express.static('public'));
 app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
-app.get("/api/:data", function (req, res) {
-  const date_string=req.params.word;
+app.get("/api/:date", function (req, res) {
+  const date_string=req.params.date;
   const unixMilliseconds = Date.now();
   (req, res, next) => {
     req.time = new Date(date_string).toString();
