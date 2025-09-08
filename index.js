@@ -21,13 +21,16 @@ app.get("/api", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-app.get("/now", (req,res,next)=>{
-    req.time=new Date().toString();
-    next();
-}),(req,res)=>{
-},function(req,res){
-    res.json({time: req.time});
-}
+app.get("/now", 
+  (req, res, next) => {
+    req.time = new Date().toString();
+    next(); // ไปต่อยัง handler ถัดไป
+  },
+  (req, res) => {
+    res.json({ time: req.time }); // ส่ง response เป็น JSON
+  }
+);
+
 
 
 // your first API endpoint... 
